@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="C:\Users\juand\OneDrive\Escritorio\ Vacation_Package_Cost_Estimator\src\main\java\com\myproject\estimator\Main.java">
+<error line="1" severity="error" message="Line does not match expected header line of &apos;// Copyright (C) 2020&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck"/>
+<error line="14" column="1" severity="error" message="Type Javadoc comment is missing @author tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+<file name="C:\Users\juand\OneDrive\Escritorio\ Vacation_Package_Cost_Estimator\src\main\java\com\myproject\estimator\VacationPackage.java">
+<error line="1" severity="error" message="Line does not match expected header line of &apos;// Copyright (C) 2020&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck"/>
+<error line="6" column="1" severity="error" message="Type Javadoc comment is missing @author tag." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+</file>
+</checkstyle>
