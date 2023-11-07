@@ -1,65 +1,54 @@
-// Copyright (C) 2023 John
-
 package com.myproject.estimator;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-/**
- * Class representing a vacation package.
- *
- * @author John
- */
 public class VacationPackage {
-    /**
-     * The destination location of the vacation.
-     */
-    private String destination;
+    private final String destination;
+    private final int numberOfTravelers;
+    private final int duration;
+    private final List<String> selectedAddOns;
 
-    /**
-     * The number of travelers in the vacation package.
-     */
-    private int numberOfTravelers;
+    private static final Map<String, Double> ADD_ON_PRICES = Map.of(
+        "All-Inclusive Package", 200.0,
+        "Adventure Activities Package", 150.0,
+        "Spa and Wellness Package", 100.0
+    );
 
-    /**
-     * The duration in days of the vacation package.
-     */
-    private int duration;
-
-    /**
-     * Constructor to create a new vacation package.
-     *
-     * @param destination       The destination location of the vacation.
-     * @param numberOfTravelers The number of travelers in the vacation package.
-     * @param duration          The duration in days of the vacation package.
-     */
     public VacationPackage(final String destination, final int numberOfTravelers, final int duration) {
         this.destination = destination;
         this.numberOfTravelers = numberOfTravelers;
         this.duration = duration;
+        this.selectedAddOns = new ArrayList<>();
     }
 
-    /**
-     * Calculate the total cost of the vacation package.
-     *
-     * This method calculates the total cost of the vacation
-     * such as the destination location, the number of travelers.
-     *
-     * @return The total cost of the vacation package as an integer value.
-     */
+    public void selectAddOn(String addOn) {
+        selectedAddOns.add(addOn);
+    }
+
     public int calculateCost() {
         double cost = 1000;
 
-        // Extra cost for popular destination
-        if (destination.equals("New York City")) {
+        for (String addOn : selectedAddOns) {
+            Double addOnPrice = ADD_ON_PRICES.get(addOn);
+            if (addOnPrice != null) {
+                cost += addOnPrice * numberOfTravelers;
+            } else {
+                System.out.println("Unknown add-on: " + addOn);
+            }
+        }
+
+        if ("New York City".equals(destination)) {
             cost += 600;
-        } else if (destination.equals("Paris")) {
+        } else if ("Paris".equals(destination)) {
             cost += 500;
         }
 
-        // Group discount
         if (numberOfTravelers > 4 && numberOfTravelers <= 10) {
-            cost = cost - (cost * 0.1);
+            cost -= (cost * 0.1);
         } else if (numberOfTravelers > 10) {
-            cost = cost - (cost * 0.2);
+            cost -= (cost * 0.2);
         }
 
         if (duration < 7) {
